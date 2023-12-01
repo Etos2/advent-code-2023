@@ -7,11 +7,20 @@ fn main() {
 }
 
 fn part1(input: &str) -> Option<u32> {
-    input.split_terminator(char::is_whitespace).map(|line| {
-        let first = line.chars().find(char::is_ascii_digit).map(|c| char::to_digit(c, RADIX))??;
-        let last = line.chars().rfind(char::is_ascii_digit).map(|c| char::to_digit(c, RADIX))??;
-        Some(first * 10 + last)
-    }).sum()
+    input
+        .lines()
+        .map(|line| {
+            let first = line
+                .chars()
+                .find(char::is_ascii_digit)
+                .map(|c| char::to_digit(c, RADIX))??;
+            let last = line
+                .chars()
+                .rfind(char::is_ascii_digit)
+                .map(|c| char::to_digit(c, RADIX))??;
+            Some(first * 10 + last)
+        })
+        .sum()
 }
 
 #[cfg(test)]

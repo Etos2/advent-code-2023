@@ -27,7 +27,7 @@ fn main() {
 
 fn part2(input: &str) -> Option<u32> {
     input
-        .split_terminator(char::is_whitespace)
+        .lines()
         .map(|line| {
             let mut index = (i32::MAX, i32::MIN);
             let (mut first, mut last) = (0, 0);
